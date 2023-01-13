@@ -1,46 +1,40 @@
 # ruby inheritance_example.rb
 
-# superclass Greet
+# superclass or Base class Greet
 class Greet
-  def initialize(day = 'monday', year = 2023)
-    @day = day
-    @year = year
-    puts "Base class Day: #{day}, Year: #{year}"
-  end
-
   def greet
     puts 'Hello Good'
+  end
+
+  def catch_you_later
+    puts 'bye, may we meet again'
   end
 end
 
 # Morning inherits class Greet
 class Morning < Greet
-  def initialize(day, year)
-    super
-    super day
-    super day, year
-    super()
-  end
-
   def greet
     super
     puts 'Morning'
   end
 
-  def eat
-    puts 'Allowed to eat'
+  def walk
+    puts 'taking walk'
   end
 end
 
 # Snacks class inherits class Morning
-class Snacks < Morning
+class User < Morning
   def greet
     super
-    puts 'Snacks'
+    puts 'John'
   end
 end
 
-Snacks.new.greet
-Snacks.new.eat
+user = User.new
+user.greet
+user.walk
+user.catch_you_later
+# user.eat
 
-Morning.new
+puts "#{User.ancestors}"
